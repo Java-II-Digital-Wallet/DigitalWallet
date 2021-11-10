@@ -25,6 +25,7 @@ public class Card {
 	@GeneratedValue
 	private Long id;
 	private String cardName;
+	private String type;
 	private int cardNumber;
 	private int pin;
 	private int balance;
