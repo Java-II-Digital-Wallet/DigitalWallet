@@ -24,6 +24,7 @@ import lombok.NoArgsConstructor;
 public class StoreInfo {
 	@Id
 	@GeneratedValue
+	private Long id;
 	private String storeCompanyName;
 	private String address;
 	
