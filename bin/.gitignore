@@ -31,3 +31,13 @@ build/
 
 ### VS Code ###
 .vscode/
+
+/bin/
+*.class
+*.eclipse
+.settings/
+*.classpath
+
+/target/
+*persistence.xml
+
