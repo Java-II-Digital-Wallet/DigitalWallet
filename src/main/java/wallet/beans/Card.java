@@ -2,7 +2,7 @@ package wallet.beans;
 
 import java.util.Date;
 
-import javax.persistence.Entity;
+import javax.persistence.Embeddable;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
  * Nov 10, 2021
  */
 
-@Entity
+@Embeddable
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
