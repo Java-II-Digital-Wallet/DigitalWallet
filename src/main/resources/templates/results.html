@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>View All Customers</title>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col">
+				<form>
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th scope="col">#</th>
+								<th scope="col">ID</th>
+								<th scope="col">Name</th>
+								<th scope="col">Address</th>
+								<th scope="col">Birth Date</th>
+								<th scope="col">Phone Number</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="currentCustomer : ${customers}">
+								<td th:text="${currentCustomer.id}"/>
+								<td th:text="${currentCustomer.name}"/>
+								<td th:text="${currentCustomer.address}"/>
+								<td th:text="${currentCustomer.birthDate}"/>
+								<td th:text="${currentCustomer.phoneNumber}">
+							</tr>
+						</tbody>
+					</table>
+				</form>
+			</div>
+			<div class="col">
+				<a href="../inputCustomer" class="btn" role="button">Create a new customer</a>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
