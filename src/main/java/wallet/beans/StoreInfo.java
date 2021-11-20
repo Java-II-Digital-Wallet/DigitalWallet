@@ -27,5 +27,4 @@ public class StoreInfo {
 	private String storeCompanyName;
 	private String address;
 	
-
 }
