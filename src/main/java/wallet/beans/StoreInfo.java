@@ -2,7 +2,7 @@ package wallet.beans;
 
 
 
-import javax.persistence.Entity;
+import javax.persistence.Embeddable;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
@@ -17,13 +17,14 @@ import lombok.NoArgsConstructor;
  * CIS175 - Fall 2021
  * Nov 17, 2021
  */
-@Entity
+@Embeddable
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class StoreInfo {
 	@Id
 	@GeneratedValue
+	private Long id;
 	private String storeCompanyName;
 	private String address;
 	
