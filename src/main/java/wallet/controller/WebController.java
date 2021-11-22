@@ -19,13 +19,8 @@ public class WebController {
 	@Autowired
 	CustomerRepository repo;
 
-	@GetMapping({
-			"/", "viewAll" })
+	@GetMapping("/viewAll")
 	public String viewAllCustomers(Model model) {
-		if (repo.findAll().isEmpty()) {
-			return addNewCustomer(model);
-		}
-
 		model.addAttribute("customers", repo.findAll());
 		return "results";
 	}
@@ -35,6 +30,12 @@ public class WebController {
 		Customer c = new Customer();
 		model.addAttribute("newCustomer", c);
 		return "input";
+	}
+
+	@PostMapping("/inputCustomer")
+	public String addNewCustomer(@ModelAttribute Customer c, Model model) {
+		repo.save(c);
+		return viewAllCustomers(model);
 	}
 
 }
