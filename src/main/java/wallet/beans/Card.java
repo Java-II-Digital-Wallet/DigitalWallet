@@ -3,6 +3,7 @@ package wallet.beans;
 import java.util.Date;
 
 import javax.persistence.Embeddable;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
@@ -16,14 +17,14 @@ import lombok.NoArgsConstructor;
  * Nov 10, 2021
  */
 
-@Embeddable
+@Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Card {
 	@Id
 	@GeneratedValue
-	private Long id;
+	private long id;
 	private String cardName;
 	private String type;
 	private int cardNumber;

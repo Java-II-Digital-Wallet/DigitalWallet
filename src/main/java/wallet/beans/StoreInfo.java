@@ -3,9 +3,6 @@ package wallet.beans;
 
 
 import javax.persistence.Embeddable;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-
 
 
 import lombok.AllArgsConstructor;
@@ -22,11 +19,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class StoreInfo {
-	@Id
-	@GeneratedValue
-	private Long id;
 	private String storeCompanyName;
-	private String address;
-	
-
+	private String storeAddress;
 }
