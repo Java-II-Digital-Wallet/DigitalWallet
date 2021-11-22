@@ -21,4 +21,5 @@ import lombok.NoArgsConstructor;
 public class StoreInfo {
 	private String storeCompanyName;
 	private String storeAddress;
+	private String storeInfoAddress;
 }
