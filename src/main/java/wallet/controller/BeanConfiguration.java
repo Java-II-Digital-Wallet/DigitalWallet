@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import wallet.beans.Card;
 import wallet.beans.Customer;
 import wallet.beans.StoreInfo;
+import wallet.beans.Transaction;
 
 /**
  * @author Thomas Syvertsen - tjsyvertsen
@@ -33,5 +34,9 @@ public class BeanConfiguration {
 		return bean;
 	}
 	
-	
+	@Bean
+	public Transaction transaction() {
+		Transaction bean = new Transaction();
+		return bean;
+	}
 }
