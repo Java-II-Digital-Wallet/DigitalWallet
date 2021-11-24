@@ -13,25 +13,19 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * @author Thomas Syvertsen - tjsyvertsen
- * CIS175 - Fall 2021
- * Nov 10, 2021
+ * @author Thomas Syvertsen - tjsyvertsen CIS175 - Fall 2021 Nov 24, 2021
  */
 
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Card {
+public class Transaction {
 	@Id
 	@GeneratedValue
 	private long id;
-	private String cardName;
-	private String type;
-	private int cardNumber;
-	private int pin;
-	private int balance;
-	private Date expiration;
+	private double transactionAmount;
+	private Date transactionDate;
 	@Autowired
-	private Transaction[] transaction;
+	private StoreInfo storeInfo;
 }

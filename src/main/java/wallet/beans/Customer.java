@@ -30,8 +30,6 @@ public class Customer {
 	private int accountNumber;
 	@Autowired
 	private Card[] card;
-	@Autowired
-	private StoreInfo[] storeInfo;
 
 	public Customer(String name) {
 		this.name = name;
