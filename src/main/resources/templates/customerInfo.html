@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
 <title>View All Customers</title>
@@ -22,13 +22,13 @@
 						</thead>
 						<tbody>
 							<tr>
-								<td th:text="${Customer.accountNumber}"/>
+								<td th:text="${Customer.id}"/>
 								<td th:text="${Customer.name}">
 								<td th:text="${Customer.address}"/>
 								<td th:text="${Customer.birthDate}"/>
 								<td th:text="${Customer.phoneNumber}"/>
 								<td th:text="${Customer.cards}"/>
-<!-- 								<td><a th:href="@{/view/{accountNumber}(currentCustomer.accountNumber=${currentCustomer.accountNumber})}">Edit</a></td> -->
+								<td><a th:href="@{/viewCard/{id}(id=${Customer.id})}">View Cards</a></td>
 							</tr>
 						</tbody>
 					</table>

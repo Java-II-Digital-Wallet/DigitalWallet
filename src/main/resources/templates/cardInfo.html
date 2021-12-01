@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>View All Cards</title>
+</head>
+<body>
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-8">
+				<form>
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th scope="col">Id</th>
+								<th scope="col">Name</th>	
+								<th scope="col">Type</th>
+								<th scope="col">Number</th>		
+								<th scope="col">Pin</th>
+								<th scope="col">Balance</th>	
+								<th scope="col">Expiration Date</th>
+								<th scope="col">Transactions</th>							
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="currentCard : ${Customer.cards}">
+								<td th:text="${currentCard.id}">
+								<td th:text="${currentCard.cardName}"/>
+								<td th:text="${currentCard.type}"/>
+								<td th:text="${currentCard.cardNumber}">
+								<td th:text="${currentCard.pin}"/>
+								<td th:text="${currentCard.balance}">
+<!-- 								<td th:text="${currentCard.expiration}"/> -->
+								<td th:text="${currentCard.transaction}"/>
+<!-- 								<td><a th:href="@{/viewCustomer/{id}(id=${currentCustomer.id})}">View</a></td> -->
+							</tr>
+						</tbody>
+					</table>
+				</form>
+			</div>
+			<div class="col">
+				<a th:href="@{/inputCard/{id}(id=${Customer.id})}" class="btn" role="button">Create a new card</a>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

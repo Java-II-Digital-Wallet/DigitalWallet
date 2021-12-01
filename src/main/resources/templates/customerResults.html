@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
 <title>View All Customers</title>
@@ -12,15 +12,15 @@
 					<table class="table table-striped">
 						<thead>
 							<tr>
-								<th scope="col">Account Number</th>
+								<th scope="col">ID</th>
 								<th scope="col">Name</th>								
 							</tr>
 						</thead>
 						<tbody>
 							<tr th:each="currentCustomer : ${customers}">
-								<td th:text="${currentCustomer.accountNumber}">
+								<td th:text="${currentCustomer.id}">
 								<td th:text="${currentCustomer.name}"/>
-								<td><a th:href="@{/viewCustomer/{id}(id=${currentCustomer.accountNumber})}">View</a></td>
+								<td><a th:href="@{/viewCustomer/{id}(id=${currentCustomer.id})}">View</a></td>
 							</tr>
 						</tbody>
 					</table>

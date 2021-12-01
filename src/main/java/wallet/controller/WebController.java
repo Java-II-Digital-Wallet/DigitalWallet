@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import wallet.beans.Card;
 import wallet.beans.Customer;
+import wallet.repository.CardRepository;
 import wallet.repository.CustomerRepository;
 
 /**
@@ -19,18 +21,42 @@ import wallet.repository.CustomerRepository;
 public class WebController {
 	@Autowired
 	CustomerRepository repo;
+	CardRepository cardRepo;
 
 	@GetMapping("/viewAllCustomers")
 	public String viewAllCustomers(Model model) {
 		model.addAttribute("customers", repo.findAll());
 		return "customerResults";
 	}
-	
+
 	@GetMapping("/viewCustomer/{id}")
 	public String viewCustomer(@PathVariable("id") long id, Model model) {
 		Customer c = repo.findById(id).orElse(null);
 		model.addAttribute("Customer", c);
 		return "customerInfo";
+	}
+
+	@GetMapping("/viewCard/{id}")
+	public String viewCards(@PathVariable("id") long id, Model model) {
+		Customer c = repo.findById(id).orElse(null);
+		model.addAttribute("Customer", c);
+		return "cardInfo";
+	}
+
+	@GetMapping("/inputCard/{id}")
+	public String addNewCard(@PathVariable("id") long id, Model model) {
+		Customer cust = repo.findById(id).orElse(null);
+		Card card = new Card();
+		cust.addCard(card);
+		model.addAttribute("newCard", card);
+		return "cardInput";
+	}
+
+	@PostMapping("/inputCard")
+	public String addNewCard(@ModelAttribute Customer c, @ModelAttribute Card card, Model model) {
+		cardRepo.save(card);
+		repo.save(c);
+		return viewCards(c.getId(), model);
 	}
 
 	@GetMapping("/inputCustomer")
@@ -45,5 +71,4 @@ public class WebController {
 		repo.save(c);
 		return viewAllCustomers(model);
 	}
-
 }

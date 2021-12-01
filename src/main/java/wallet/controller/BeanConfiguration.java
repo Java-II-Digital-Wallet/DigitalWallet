@@ -1,5 +1,7 @@
 package wallet.controller;
 
+import java.util.ArrayList;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 
@@ -16,15 +18,22 @@ import wallet.beans.Transaction;
 
 @Controller
 public class BeanConfiguration {
+//	@Bean
+//	public ArrayList<Card> cards() {
+//		ArrayList<Card> bean = new ArrayList<Card>();
+//		return bean;
+//	}
+	
 	@Bean
-	public Card card() {
-		Card bean = new Card();
+	public Card[] card() {
+		Card[] bean = new Card[10];
 		return bean;
 	}
 	
 	@Bean
 	public Customer customer() {
 		Customer bean = new Customer();
+		bean.setCards(new Card[10]);
 		return bean;
 	}
 	

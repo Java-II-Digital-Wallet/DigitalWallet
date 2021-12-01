@@ -2,6 +2,8 @@ package wallet.beans;
 
 import java.util.Date;
 
+import javax.persistence.ElementCollection;
+import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -31,12 +33,12 @@ public class Card {
 	private int cardNumber;
 	private int pin;
 	private double balance;
-	private Date expiration;
+//	private Date expiration;
 	@Autowired
-	private Transaction transaction;
+	private Transaction[] transaction;
 	
-	public double balanceAfterCharge() {
-		balance -= transaction.getTransactionAmount();
-		return balance;
-	}
+//	public double balanceAfterCharge() {
+//		balance -= transaction.getTransactionAmount();
+//		return balance;
+//	}
 }

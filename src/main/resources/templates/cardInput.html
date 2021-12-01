@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert New Card</title>
+<link th:rel="stylesheet"
+	th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} " />
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="column">
+				<form th:object="${newCard}" th:action="@{/inputCard}" method='POST'>
+					<div class="form-group col-4">
+						<label for="cardName">Card Name</label> <input type="text"
+							class="form-control" id="cardName" name="cardName" size="50"
+							th:field="*{cardName}">
+					</div>
+					<div class="form-group col-4">
+						<label for="type">Type</label> <input type="text"
+							class="form-control" id="type" name="type" size="10"
+							th:field="*{type}">
+					</div>
+					<div class="form-group col-4">
+						<label for="cardNumber">Card Number</label> <input type="number"
+							class="form-control" id="cardNumber" name="cardNumber" size="10"
+							th:field="*{cardNumber}">
+					</div>
+					<div class="form-group col-4">
+						<label for="pin">Pin</label> <input type="number"
+							class="form-control" id="pin" name="pin" size="4"
+							th:field="*{pin}">
+					</div>
+					<div class="form-group col-4">
+						<label for="balance">Balance</label> <input type="number"
+							class="form-control" id="balance" name="balance" size="15"
+							th:field="*{balance}">
+					</div>
+<!-- 					<div class="form-group col-4"> -->
+<!-- 						<label for="expiration">Expiration</label> <input type="text" -->
+<!-- 							class="form-control" id="expiration" name="expiration" size="15" -->
+<!-- 							th:field="*{expiration}"> -->
+<!-- 					</div> -->
+
+					<button type="submit" class="btn btn-primary">Submit</button>
+				</form>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>
