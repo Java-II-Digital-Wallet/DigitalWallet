@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>View All Customers</title>
+</head>
+<body>
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-8">
+				<form>
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th scope="col">Account Number</th>
+								<th scope="col">Name</th>								
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="currentCustomer : ${customers}">
+								<td th:text="${currentCustomer.accountNumber}">
+								<td th:text="${currentCustomer.name}"/>
+								<td><a th:href="@{/viewCustomer/{id}(id=${currentCustomer.accountNumber})}">View</a></td>
+							</tr>
+						</tbody>
+					</table>
+				</form>
+			</div>
+			<div class="col">
+				<a href="/inputCustomer" class="btn" role="button">Create a new customer</a>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

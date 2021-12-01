@@ -27,9 +27,9 @@ public class Customer {
 	private String address;
 	private String birthDate;
 	private String phoneNumber;
-	private int accountNumber;
+	private long accountNumber;
 	@Autowired
-	private Card[] card;
+	private Card[] cards;
 
 	public Customer(String name) {
 		this.name = name;

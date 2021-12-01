@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import wallet.beans.Customer;
@@ -19,17 +20,24 @@ public class WebController {
 	@Autowired
 	CustomerRepository repo;
 
-	@GetMapping("/viewAll")
+	@GetMapping("/viewAllCustomers")
 	public String viewAllCustomers(Model model) {
 		model.addAttribute("customers", repo.findAll());
-		return "results";
+		return "customerResults";
+	}
+	
+	@GetMapping("/viewCustomer/{id}")
+	public String viewCustomer(@PathVariable("id") long id, Model model) {
+		Customer c = repo.findById(id).orElse(null);
+		model.addAttribute("Customer", c);
+		return "customerInfo";
 	}
 
 	@GetMapping("/inputCustomer")
 	public String addNewCustomer(Model model) {
 		Customer c = new Customer();
 		model.addAttribute("newCustomer", c);
-		return "input";
+		return "customerInput";
 	}
 
 	@PostMapping("/inputCustomer")

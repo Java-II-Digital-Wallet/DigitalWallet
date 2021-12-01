@@ -12,20 +12,23 @@
 					<table class="table table-striped">
 						<thead>
 							<tr>
-								<th scope="col">ID</th>
+								<th scope="col">AccountNumber</th>
 								<th scope="col">Name</th>
-								<th scope="col">Address</th>
+								<th scope="col">Address</th>	
 								<th scope="col">Birth Date</th>
 								<th scope="col">Phone Number</th>
+								<th scope="col">Cards</th>							
 							</tr>
 						</thead>
 						<tbody>
-							<tr th:each="currentCustomer : ${customers}">
-								<td th:text="${currentCustomer.id}"/>
-								<td th:text="${currentCustomer.name}"/>
-								<td th:text="${currentCustomer.address}"/>
-								<td th:text="${currentCustomer.birthDate}"/>
-								<td th:text="${currentCustomer.phoneNumber}">
+							<tr>
+								<td th:text="${Customer.accountNumber}"/>
+								<td th:text="${Customer.name}">
+								<td th:text="${Customer.address}"/>
+								<td th:text="${Customer.birthDate}"/>
+								<td th:text="${Customer.phoneNumber}"/>
+								<td th:text="${Customer.cards}"/>
+<!-- 								<td><a th:href="@{/view/{accountNumber}(currentCustomer.accountNumber=${currentCustomer.accountNumber})}">Edit</a></td> -->
 							</tr>
 						</tbody>
 					</table>
