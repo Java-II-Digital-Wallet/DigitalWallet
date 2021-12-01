@@ -30,8 +30,13 @@ public class Card {
 	private String type;
 	private int cardNumber;
 	private int pin;
-	private int balance;
+	private double balance;
 	private Date expiration;
 	@Autowired
-	private Transaction[] transaction;
+	private Transaction transaction;
+	
+	public double balanceAfterCharge() {
+		balance -= transaction.getTransactionAmount();
+		return balance;
+	}
 }
