@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import wallet.beans.Card;
 import wallet.beans.Customer;
-import wallet.repository.CardRepository;
 import wallet.repository.CustomerRepository;
 
 /**
@@ -21,7 +20,6 @@ import wallet.repository.CustomerRepository;
 public class WebController {
 	@Autowired
 	CustomerRepository repo;
-	CardRepository cardRepo;
 
 	@GetMapping("/viewAllCustomers")
 	public String viewAllCustomers(Model model) {
@@ -31,15 +29,15 @@ public class WebController {
 
 	@GetMapping("/viewCustomer/{id}")
 	public String viewCustomer(@PathVariable("id") long id, Model model) {
-		Customer c = repo.findById(id).orElse(null);
-		model.addAttribute("Customer", c);
+		Customer cust = repo.findById(id).orElse(null);
+		model.addAttribute("Customer", cust);
 		return "customerInfo";
 	}
 
-	@GetMapping("/viewCard/{id}")
-	public String viewCards(@PathVariable("id") long id, Model model) {
-		Customer c = repo.findById(id).orElse(null);
-		model.addAttribute("Customer", c);
+	@GetMapping("/viewAllAccountCards/{id}")
+	public String viewAllAccountCards(@PathVariable("id") long id, Model model) {
+		Customer cust = repo.findById(id).orElse(null);
+		model.addAttribute("Customer", cust);
 		return "cardInfo";
 	}
 
@@ -53,22 +51,22 @@ public class WebController {
 	}
 
 	@PostMapping("/inputCard")
-	public String addNewCard(@ModelAttribute Customer c, @ModelAttribute Card card, Model model) {
-		cardRepo.save(card);
-		repo.save(c);
-		return viewCards(c.getId(), model);
+	public String addNewCard(@ModelAttribute Customer cust, @ModelAttribute Card card, Model model) {
+		cust.addCard(card);
+		repo.save(cust);
+		return viewAllAccountCards(cust.getId(), model);
 	}
 
 	@GetMapping("/inputCustomer")
 	public String addNewCustomer(Model model) {
-		Customer c = new Customer();
-		model.addAttribute("newCustomer", c);
+		Customer cust = new Customer();
+		model.addAttribute("newCustomer", cust);
 		return "customerInput";
 	}
 
 	@PostMapping("/inputCustomer")
-	public String addNewCustomer(@ModelAttribute Customer c, Model model) {
-		repo.save(c);
+	public String addNewCustomer(@ModelAttribute Customer cust, Model model) {
+		repo.save(cust);
 		return viewAllCustomers(model);
 	}
 }

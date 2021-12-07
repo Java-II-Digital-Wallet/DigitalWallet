@@ -1,5 +1,6 @@
 package wallet.beans;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.ElementCollection;
@@ -20,11 +21,13 @@ import lombok.NoArgsConstructor;
  * Nov 10, 2021
  */
 
-@Entity
+@Embeddable
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Card {
+public class Card implements Serializable {
+	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue
 	private long id;

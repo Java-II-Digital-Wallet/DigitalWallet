@@ -28,7 +28,7 @@
 								<td th:text="${Customer.birthDate}"/>
 								<td th:text="${Customer.phoneNumber}"/>
 								<td th:text="${Customer.cards}"/>
-								<td><a th:href="@{/viewCard/{id}(id=${Customer.id})}">View Cards</a></td>
+								<td><a th:href="@{/viewAllAccountCards/{id}(id=${Customer.id})}">View Cards</a></td>
 							</tr>
 						</tbody>
 					</table>

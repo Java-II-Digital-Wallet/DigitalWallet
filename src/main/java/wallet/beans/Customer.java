@@ -7,10 +7,13 @@ package wallet.beans;
 
 import java.util.ArrayList;
 
+import javax.persistence.CascadeType;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OrderColumn;
 import javax.persistence.SequenceGenerator;
 
@@ -33,8 +36,10 @@ public class Customer {
 	private String address;
 	private String birthDate;
 	private String phoneNumber;
-//	@Autowired
-	private Card[] cards;
+	@Autowired
+//	@OneToMany(mappedBy = "customer", fetch = FetchType.EAGER,
+//            cascade = CascadeType.ALL)
+	private ArrayList<Card> cards;
 
 	public Customer(String name) {
 		this.name = name;
@@ -48,11 +53,6 @@ public class Customer {
 	}
 	
 	public void addCard(Card card) {
-		for (int i = 0; i < cards.length; i++) {
-			if (cards[i] != null) {
-				cards[i] = card;
-				return;
-			}
-		}
+		cards.add(card);
 	}
 }
