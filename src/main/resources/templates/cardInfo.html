@@ -23,7 +23,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr th:each="card : ${Cards}">
+							<tr>
 <!-- 								<td th:text="${currentCard.id}"> -->
 								<td th:text="${card.cardName}"/>
 								<td th:text="${card.type}"/>
@@ -31,8 +31,8 @@
 								<td th:text="${card.pin}"/>
 								<td th:text="${card.balance}">
 <!-- 								<td th:text="${currentCard.expiration}"/> -->
-<!-- 								<td th:text="${currentCard.transaction}"/> -->
-<!-- 								<td><a th:href="@{/viewCustomer/{id}(id=${currentCustomer.id})}">View</a></td> -->
+								<td th:text="${card.transaction}"/>
+								<td><a th:href="@{/viewAllTransactions/{id}(id=${id})}">View</a></td>
 							</tr>
 						</tbody>
 					</table>

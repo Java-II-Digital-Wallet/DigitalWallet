@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import wallet.beans.Card;
 import wallet.beans.Customer;
+import wallet.beans.StoreInfo;
+import wallet.beans.Transaction;
 import wallet.repository.CustomerRepository;
 
 /**
@@ -44,23 +46,52 @@ public class WebController {
 	@GetMapping("/viewAllAccountCards/{id}")
 	public String viewAllAccountCards(@PathVariable("id") long id, Model model) {
 		Customer cust = repo.findById(id).orElse(null);
-		model.addAttribute("Cards", cust.getCards());
+		model.addAttribute("card", cust.getCard());
 		model.addAttribute("id", id);
 		return "cardInfo";
+	}
+	
+	@GetMapping("/viewAllTransactions/{id}")
+	public String viewAllTransactions(@PathVariable("id") long id, Model model) {
+		Customer cust = repo.findById(id).orElse(null);
+		model.addAttribute("Transactions", cust.getCard().getTransaction());
+		model.addAttribute("id", id);
+		return "transactionInfo";
+	}
+	
+	@GetMapping("/inputTransaction/{id}")
+	public String addNewTransaction(@PathVariable("id") long id, Model model) {
+		Customer cust = repo.findById(id).orElse(null);
+		Transaction transaction = new Transaction();
+		model.addAttribute("transaction", transaction);
+		model.addAttribute("id", id);
+		return "transactionInput";
+	}
+	
+	@PostMapping("/inputTransaction/{id}")
+	public String addNewTransaction(@PathVariable("id") long id, @ModelAttribute Transaction transaction, Model model) {
+		Customer cust = repo.findById(id).orElse(null);
+		Card card = cust.getCard();
+		card.setTransaction(transaction);
+		cust.setCard(card);
+		repo.save(cust);
+		return viewAllTransactions(id, model);
 	}
 
 	@GetMapping("/inputCard/{id}")
 	public String addNewCard(@PathVariable("id") long id, Model model) {
 		Customer cust = repo.findById(id).orElse(null);
-		model.addAttribute("newCardCustomer", cust);
-		model.addAttribute("cardSize", cust.getCards().length);
-		model.addAttribute("customerId", id);
+		Card card = new Card();
+		model.addAttribute("card", card);
+		model.addAttribute("customerId", cust.getId());
 		return "cardInput";
 	}
 
 	@PostMapping("/inputCard/{id}")
-	public String addNewCard(@ModelAttribute Customer cust, Model model) {
-		
+	public String addNewCard(@PathVariable("id") long id, @ModelAttribute Card card, Model model) {
+		Customer cust = repo.findById(id).orElse(null);
+		cust.setCard(card);
+		repo.save(cust);
 		return viewAllAccountCards(cust.getId(), model);
 	}
 
@@ -73,6 +104,12 @@ public class WebController {
 
 	@PostMapping("/inputCustomer")
 	public String addNewCustomer(@ModelAttribute Customer cust, Model model) {
+		Card card = new Card();
+		Transaction transaction = new Transaction();
+		StoreInfo storeInfo = new StoreInfo();
+		transaction.setStoreInfo(storeInfo);
+		card.setTransaction(transaction);
+		cust.setCard(card);
 		repo.save(cust);
 		return viewAllCustomers(model);
 	}

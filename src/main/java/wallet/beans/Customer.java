@@ -36,11 +36,8 @@ public class Customer {
 	private String address;
 	private String birthDate;
 	private String phoneNumber;
-//	@Autowired
-	@OneToMany(mappedBy = "id", fetch = FetchType.EAGER,
-            cascade = CascadeType.ALL)
-	@OrderColumn
-	private Card[] cards = new Card[10];
+	@Autowired
+	private Card card;
 
 	public Customer(String name) {
 		this.name = name;
@@ -51,9 +48,5 @@ public class Customer {
 		this.address = address;
 		this.birthDate = birthDate;
 		this.phoneNumber = phoneNumber;
-	}
-	
-	public void addCard(Card card) {
-		cards[0] = card;
 	}
 }

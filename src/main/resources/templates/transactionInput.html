@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert New Transaction</title>
+<link th:rel="stylesheet"
+	th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} " />
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="column">
+				<form th:object="${transaction}" th:action="@{/inputTransaction/{id}(id=${id})}" method='POST'>
+					<div class="form-group col-4">
+						<label for="transactionAmount">Transaction Amount</label> <input type="number"
+							class="form-control" id="transactionAmount" name="transactionAmount" size="15"
+							th:field="*{transactionAmount}">
+					</div>
+<!-- 					<div class="form-group col-4"> -->
+<!-- 						<label for="expiration">Expiration</label> <input type="text" -->
+<!-- 							class="form-control" id="expiration" name="expiration" size="15" -->
+<!-- 							th:field="*{expiration}"> -->
+<!-- 					</div> -->
+
+					<button type="submit" class="btn btn-primary">Submit</button>
+				</form>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

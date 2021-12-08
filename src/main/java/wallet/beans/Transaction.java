@@ -2,6 +2,7 @@ package wallet.beans;
 
 import java.util.Date;
 
+import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -16,16 +17,15 @@ import lombok.NoArgsConstructor;
  * @author Thomas Syvertsen - tjsyvertsen CIS175 - Fall 2021 Nov 24, 2021
  */
 
-@Entity
+@Embeddable
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Transaction {
-	@Id
-	@GeneratedValue
-	private long id;
+//	@Id
+//	@GeneratedValue
+//	private long id;
 	private double transactionAmount;
-	private Date transactionDate;
 	@Autowired
 	private StoreInfo storeInfo;
 }

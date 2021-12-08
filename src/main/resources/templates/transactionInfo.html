@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>View All Transactions</title>
+</head>
+<body>
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-8">
+				<form>
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th scope="col">Transaction Amount</th>
+								<th scope="col">Transaction Date</th>	
+								<th scope="col">Store Info</th>						
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="transaction : ${Transactions}">
+<!-- 								<td th:text="${currentCard.id}"> -->
+								<td th:text="${transaction.transactionAmount}"/>
+								<td th:text="${transaction.storeInfo}">
+							</tr>
+						</tbody>
+					</table>
+				</form>
+			</div>
+			<div class="col">
+				<a th:href="@{/inputTransaction/{id}(id=${id})}" class="btn" role="button">Create a new transaction</a>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

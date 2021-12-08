@@ -21,22 +21,22 @@ import lombok.NoArgsConstructor;
  * Nov 10, 2021
  */
 
-@Entity
+@Embeddable
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Card {	
-	@Id
-	@GeneratedValue
-	private long id;
+//	@Id
+//	@GeneratedValue
+//	private long id;
 	private String cardName;
 	private String type;
 	private int cardNumber;
 	private int pin;
-	private double balance;
+	private int balance;
 //	private Date expiration;
 	@Autowired
-	private Transaction[] transaction;
+	private Transaction transaction;
 	
 //	public double balanceAfterCharge() {
 //		balance -= transaction.getTransactionAmount();
