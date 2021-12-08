@@ -40,6 +40,8 @@ public class Customer {
 //	@OneToMany(mappedBy = "customer", fetch = FetchType.EAGER,
 //            cascade = CascadeType.ALL)
 	private ArrayList<Card> cards;
+	
+	
 
 	public Customer(String name) {
 		this.name = name;
