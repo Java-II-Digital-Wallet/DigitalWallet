@@ -1,12 +1,16 @@
 package wallet.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import wallet.beans.Card;
 import wallet.beans.Customer;
@@ -20,6 +24,9 @@ import wallet.repository.CustomerRepository;
 public class WebController {
 	@Autowired
 	CustomerRepository repo;
+	
+	@Autowired
+	SearchService service;
 
 	@GetMapping("/viewAllCustomers")
 	public String viewAllCustomers(Model model) {
@@ -68,5 +75,14 @@ public class WebController {
 	public String addNewCustomer(@ModelAttribute Customer cust, Model model) {
 		repo.save(cust);
 		return viewAllCustomers(model);
+	}
+	
+	@RequestMapping("/")	
+	public String searchCustomer(Model model, @Param("keyword") String keyword)
+	{
+			List<Customer> listCustomers = service.listAll(keyword);
+			model.addAttribute("listCustomer", listCustomers);
+			model.addAttribute("keyword", keyword);		
+			return "index";
 	}
 }

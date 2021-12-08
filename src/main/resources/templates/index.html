@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script type="text/javascript">
+    function clearSearch() 
+    {
+        window.location = "[[@{/}]]";
+    }
+</script>
+</head>
+<body>
+<form th:action="@{/}">
+    Filter: <input type="text" name="keyword" id="keyword" size="50" th:value="${keyword}" required />
+    &nbsp;
+    <input type="submit" value="Search" onclick="showHide()"/>
+    &nbsp;
+    <input type="button" value="Clear" id="btnClear" onclick="clearSearch()" />
+</form>
+<h1>Digital Wallet</h1>
+<a href="viewAllCustomers">View all customers</a><br />
+<a href="inputCustomer">Add a new customer</a><br />
+<br />
+<div id="test">
+<h3>Search results</h3>
+ 	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th scope="col">ID</th>
+				<th scope="col">Name</th>								
+			</tr>
+		</thead>
+	<tbody>
+			<tr th:each="currentCustomer : ${listCustomer}">
+			<td th:text="${currentCustomer.id}">
+			<td th:text="${currentCustomer.name}"/>
+			<td><a th:href="@{/viewCustomer/{id}(id=${currentCustomer.id})}">View</a></td>
+		</tr>
+	</tbody>
+</table>
+</div>
+</body>
+</html>
