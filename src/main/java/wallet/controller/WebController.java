@@ -37,23 +37,23 @@ public class WebController {
 	@GetMapping("/viewAllAccountCards/{id}")
 	public String viewAllAccountCards(@PathVariable("id") long id, Model model) {
 		Customer cust = repo.findById(id).orElse(null);
-		model.addAttribute("Customer", cust);
+		model.addAttribute("Cards", cust.getCards());
+		model.addAttribute("id", id);
 		return "cardInfo";
 	}
 
 	@GetMapping("/inputCard/{id}")
 	public String addNewCard(@PathVariable("id") long id, Model model) {
 		Customer cust = repo.findById(id).orElse(null);
-		Card card = new Card();
-		cust.addCard(card);
-		model.addAttribute("newCard", card);
+		model.addAttribute("newCardCustomer", cust);
+		model.addAttribute("cardSize", cust.getCards().length);
+		model.addAttribute("customerId", id);
 		return "cardInput";
 	}
 
-	@PostMapping("/inputCard")
-	public String addNewCard(@ModelAttribute Customer cust, @ModelAttribute Card card, Model model) {
-		cust.addCard(card);
-		repo.save(cust);
+	@PostMapping("/inputCard/{id}")
+	public String addNewCard(@ModelAttribute Customer cust, Model model) {
+		
 		return viewAllAccountCards(cust.getId(), model);
 	}
 

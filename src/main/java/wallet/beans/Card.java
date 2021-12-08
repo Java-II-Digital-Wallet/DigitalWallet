@@ -21,13 +21,11 @@ import lombok.NoArgsConstructor;
  * Nov 10, 2021
  */
 
-@Embeddable
+@Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Card implements Serializable {
-	private static final long serialVersionUID = 1L;
-	
+public class Card {	
 	@Id
 	@GeneratedValue
 	private long id;

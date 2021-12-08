@@ -36,10 +36,11 @@ public class Customer {
 	private String address;
 	private String birthDate;
 	private String phoneNumber;
-	@Autowired
-//	@OneToMany(mappedBy = "customer", fetch = FetchType.EAGER,
-//            cascade = CascadeType.ALL)
-	private ArrayList<Card> cards;
+//	@Autowired
+	@OneToMany(mappedBy = "id", fetch = FetchType.EAGER,
+            cascade = CascadeType.ALL)
+	@OrderColumn
+	private Card[] cards = new Card[10];
 
 	public Customer(String name) {
 		this.name = name;
@@ -53,6 +54,6 @@ public class Customer {
 	}
 	
 	public void addCard(Card card) {
-		cards.add(card);
+		cards[0] = card;
 	}
 }

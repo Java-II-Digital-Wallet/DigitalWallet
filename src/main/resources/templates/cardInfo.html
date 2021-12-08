@@ -23,15 +23,15 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr th:each="currentCard : ${Customer.cards}">
+							<tr th:each="card : ${Cards}">
 <!-- 								<td th:text="${currentCard.id}"> -->
-								<td th:text="${currentCard.cardName}"/>
-								<td th:text="${currentCard.type}"/>
-								<td th:text="${currentCard.cardNumber}">
-								<td th:text="${currentCard.pin}"/>
-								<td th:text="${currentCard.balance}">
+								<td th:text="${card.cardName}"/>
+								<td th:text="${card.type}"/>
+								<td th:text="${card.cardNumber}">
+								<td th:text="${card.pin}"/>
+								<td th:text="${card.balance}">
 <!-- 								<td th:text="${currentCard.expiration}"/> -->
-								<td th:text="${currentCard.transaction}"/>
+<!-- 								<td th:text="${currentCard.transaction}"/> -->
 <!-- 								<td><a th:href="@{/viewCustomer/{id}(id=${currentCustomer.id})}">View</a></td> -->
 							</tr>
 						</tbody>
@@ -39,7 +39,7 @@
 				</form>
 			</div>
 			<div class="col">
-				<a th:href="@{/inputCard/{id}(id=${Customer.id})}" class="btn" role="button">Create a new card</a>
+				<a th:href="@{/inputCard/{id}(id=${id})}" class="btn" role="button">Create a new card</a>
 			</div>
 		</div>
 	</div>
