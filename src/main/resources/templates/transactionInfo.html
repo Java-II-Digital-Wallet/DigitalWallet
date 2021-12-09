@@ -13,14 +13,12 @@
 						<thead>
 							<tr>
 								<th scope="col">Transaction Amount</th>
-								<th scope="col">Transaction Date</th>	
-								<th scope="col">Store Info</th>						
+								<th scope="col">Store Info</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr th:each="transaction : ${Transactions}">
-<!-- 								<td th:text="${currentCard.id}"> -->
-								<td th:text="${transaction.transactionAmount}"/>
+								<td th:text="${transaction.transactionAmount}" />
 								<td th:text="${transaction.storeInfo}">
 							</tr>
 						</tbody>
@@ -28,7 +26,10 @@
 				</form>
 			</div>
 			<div class="col">
-				<a th:href="@{/inputTransaction/{id}(id=${id})}" class="btn" role="button">Create a new transaction</a>
+				<p><a th:href="@{/inputTransaction/{id}(id=${id})}" class="btn"
+					role="button">Create a new transaction</a></p> 
+					<p><a
+					href="@{/viewAllCustomers}">Home page</a></p>
 			</div>
 		</div>
 	</div>

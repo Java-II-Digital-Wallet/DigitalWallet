@@ -14,28 +14,30 @@
 							<tr>
 								<th scope="col">AccountNumber</th>
 								<th scope="col">Name</th>
-								<th scope="col">Address</th>	
+								<th scope="col">Address</th>
 								<th scope="col">Birth Date</th>
 								<th scope="col">Phone Number</th>
-								<th scope="col">Cards</th>							
 							</tr>
 						</thead>
 						<tbody>
 							<tr>
-								<td th:text="${Customer.id}"/>
+								<td th:text="${Customer.id}" />
 								<td th:text="${Customer.name}">
-								<td th:text="${Customer.address}"/>
-								<td th:text="${Customer.birthDate}"/>
-								<td th:text="${Customer.phoneNumber}"/>
-								<td th:text="${Customer.card}"/>
-								<td><a th:href="@{/viewAllAccountCards/{id}(id=${Customer.id})}">View Cards</a></td>
+								<td th:text="${Customer.address}" />
+								<td th:text="${Customer.birthDate}" />
+								<td th:text="${Customer.phoneNumber}" />
+								<td><a
+									th:href="@{/viewAllAccountCards/{id}(id=${Customer.id})}">View
+										Cards</a></td>
 							</tr>
 						</tbody>
 					</table>
 				</form>
 			</div>
 			<div class="col">
-				<a href="/inputCustomer" class="btn" role="button">Create a new customer</a>
+				<p><a href="/inputCustomer" class="btn" role="button">Create a new
+					customer</a></p>
+					 <p><a href="@{/viewAllCustomers}">Home page</a></p>
 			</div>
 		</div>
 	</div>

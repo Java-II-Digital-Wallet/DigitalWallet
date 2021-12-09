@@ -12,26 +12,20 @@
 					<table class="table table-striped">
 						<thead>
 							<tr>
-								<th scope="col">Id</th>
 								<th scope="col">Name</th>	
 								<th scope="col">Type</th>
 								<th scope="col">Number</th>		
 								<th scope="col">Pin</th>
-								<th scope="col">Balance</th>	
-								<th scope="col">Expiration Date</th>
-								<th scope="col">Transactions</th>							
+								<th scope="col">Balance</th>							
 							</tr>
 						</thead>
 						<tbody>
 							<tr>
-<!-- 								<td th:text="${currentCard.id}"> -->
 								<td th:text="${card.cardName}"/>
 								<td th:text="${card.type}"/>
 								<td th:text="${card.cardNumber}">
 								<td th:text="${card.pin}"/>
 								<td th:text="${card.balance}">
-<!-- 								<td th:text="${currentCard.expiration}"/> -->
-								<td th:text="${card.transaction}"/>
 								<td><a th:href="@{/viewAllTransactions/{id}(id=${id})}">View</a></td>
 							</tr>
 						</tbody>
@@ -39,7 +33,8 @@
 				</form>
 			</div>
 			<div class="col">
-				<a th:href="@{/inputCard/{id}(id=${id})}" class="btn" role="button">Create a new card</a>
+				<p><a th:href="@{/inputCard/{id}(id=${id})}" class="btn" role="button">Create a new card</a></p>
+				<p><a href="@{/viewAllCustomers}">Home page</a></p>
 			</div>
 		</div>
 	</div>
