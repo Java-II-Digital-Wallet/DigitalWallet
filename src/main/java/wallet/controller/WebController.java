@@ -63,20 +63,25 @@ public class WebController {
 	public String addNewTransaction(@PathVariable("id") long id, Model model) {
 		Customer cust = repo.findById(id).orElse(null);
 		Transaction transaction = new Transaction();
+		StoreInfo storeInfo = new StoreInfo();
+		model.addAttribute("storeInfo", storeInfo);
 		model.addAttribute("transaction", transaction);
 		model.addAttribute("id", id);
 		return "transactionInput";
 	}
 	
 	@PostMapping("/inputTransaction/{id}")
-	public String addNewTransaction(@PathVariable("id") long id, @ModelAttribute Transaction transaction, Model model) {
+	public String addNewTransaction(@PathVariable("id") long id, @ModelAttribute Transaction transaction, @ModelAttribute StoreInfo storeInfo, Model model) {
 		Customer cust = repo.findById(id).orElse(null);
 		Card card = cust.getCard();
+		transaction.setStoreInfo(storeInfo);
 		card.setTransaction(transaction);
 		cust.setCard(card);
 		repo.save(cust);
 		return viewAllTransactions(id, model);
 	}
+	
+	// gets through controller and saves transaction
 
 	@GetMapping("/inputCard/{id}")
 	public String addNewCard(@PathVariable("id") long id, Model model) {
@@ -90,6 +95,7 @@ public class WebController {
 	@PostMapping("/inputCard/{id}")
 	public String addNewCard(@PathVariable("id") long id, @ModelAttribute Card card, Model model) {
 		Customer cust = repo.findById(id).orElse(null);
+		card.setTransaction(new Transaction());
 		cust.setCard(card);
 		repo.save(cust);
 		return viewAllAccountCards(cust.getId(), model);

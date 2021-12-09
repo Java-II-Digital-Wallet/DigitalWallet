@@ -16,7 +16,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class StoreInfo {
-	private String storeCompanyName;
+	private String storeName;
 	private String storeAddress;
-	private String storeInfoAddress;
 }
