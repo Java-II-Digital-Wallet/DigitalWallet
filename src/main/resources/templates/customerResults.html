@@ -3,8 +3,28 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>View All Customers</title>
+<style>
+body{
+	padding-left: 25%;
+	padding-right: 25%;
+	background-color: lightcyan;
+}
+
+.main{
+	text-align: center;
+	border-style: solid;
+	background-color: powderblue;
+	border-color: lightskyblue;
+}
+table.table{
+	padding-left: 40%;
+	padding-bottom: 100px;
+}
+</style>
 </head>
 <body>
+<div class="main">
+	<h1>Customer Results</h1>
 	<div class="container">
 		<div class="row justify-content-center">
 			<div class="col-8">
@@ -27,10 +47,11 @@
 				</form>
 			</div>
 			<div class="col">
-				<a href="/inputCustomer" class="btn" role="button">Create a new customer</a> <br />
-				<a href="/">Home page</a>
+				<p><a href="/inputCustomer" class="btn" role="button">Create a new customer</a></p>
+				<p><a href="/">Home page</a></p>
 			</div>
 		</div>
 	</div>
+</div>
 </body>
 </html>

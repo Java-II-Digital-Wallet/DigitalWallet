@@ -3,9 +3,35 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>View All Customers</title>
+<style>
+body{
+	padding-left: 25%;
+	padding-right: 25%;
+	background-color: lightcyan;
+}
+
+.main{	
+	border-style: solid;
+	background-color: powderblue;
+	border-color: lightskyblue;
+	padding-left: 25px;
+	padding-right: 25px; 
+}
+div{
+	padding-bottom: 15px;
+}
+h1{
+	padding-bottom: 25px; 
+}
+th{
+	padding-right: 15px;
+}
+</style>
 </head>
 <body>
+<div class="main">
 	<div class="container">
+	<h1>Customer Information</h1>
 		<div class="row justify-content-center">
 			<div class="col-8">
 				<form>
@@ -37,9 +63,11 @@
 			<div class="col">
 				<p><a href="/inputCustomer" class="btn" role="button">Create a new
 					customer</a></p>
-					 <p><a href="@{/viewAllCustomers}">Home page</a></p>
+					 <!-- <p><a href="@{/viewAllCustomers}">Home page</a></p> -->
+					 <p><a href="/">Home page</a></p>
 			</div>
 		</div>
 	</div>
+</div>
 </body>
 </html>

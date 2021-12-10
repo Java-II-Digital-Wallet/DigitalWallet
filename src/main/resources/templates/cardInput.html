@@ -5,34 +5,57 @@
 <title>Insert New Card</title>
 <link th:rel="stylesheet"
 	th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} " />
+<style>
+body{
+	padding-left: 25%;
+	padding-right: 25%;
+	background-color: lightcyan;
+}
+
+.main{	
+	border-style: solid;
+	background-color: powderblue;
+	border-color: lightskyblue;
+	padding-left: 25px;
+	padding-right: 25px; 
+}
+div{
+	padding-bottom: 15px;
+}
+h1{
+	padding-bottom: 25px; 
+}
+</style>
 </head>
 <body>
+<div class="main">
+	<h1>Add a New Card</h1>
 	<div class="container">
 		<div class="row">
 			<div class="column">
 				<form th:object="${card}" th:action="@{/inputCard/{id}(id=${customerId})}" method='POST'>
 					<div class="form-group col-4">
-						<label for="cardName">Card Name</label> <input type="text"
+						<label for="cardName">Card Name: </label> <input type="text"
 							class="form-control" id="cardName" name="cardName" size="50"
 							th:field="*{cardName}">
 					</div>
 					<div class="form-group col-4">
-						<label for="type">Type</label> <input type="text"
+						<label for="type">Type: </label> <input type="text"
 							class="form-control" id="type" name="type" size="10"
 							th:field="*{type}">
 					</div>
 					<div class="form-group col-4">
-						<label for="cardNumber">Card Number</label> <input type="number"
+						<label for="cardNumber">Card Number: </label> <input type="number"
 							class="form-control" id="cardNumber" name="cardNumber" size="10"
 							th:field="*{cardNumber}">
 					</div>
 					<div class="form-group col-4">
-						<label for="pin">Pin</label> <input type="number"
+						<label for="pin">Pin: </label> <input type="number"
 							class="form-control" id="pin" name="pin" size="4"
 							th:field="*{pin}">
 					</div>
 					<div class="form-group col-4">
-						<label for="balance">Balance</label> <input type="number"
+						<label for="balance">Balance: </label> <input type="number"
 							class="form-control" id="balance" name="balance" size="15"
 							th:field="*{balance}">
 					</div>
@@ -47,6 +70,6 @@
 			</div>
 		</div>
 	</div>
-
+</div>
 </body>
 </html>

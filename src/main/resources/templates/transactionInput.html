@@ -5,26 +5,50 @@
 <title>Insert New Transaction</title>
 <link th:rel="stylesheet"
 	th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} " />
+<style>
+body{
+	padding-left: 25%;
+	padding-right: 25%;
+	background-color: lightcyan;
+}
+
+.main{	
+	border-style: solid;
+	background-color: powderblue;
+	border-color: lightskyblue;
+	padding-left: 25px;
+	padding-right: 25px; 
+}
+div{
+	padding-bottom: 15px;
+}
+h1{
+	padding-bottom: 25px; 
+}
+</style>
+</head>
 <body>
+<div class="main">
+	<h1>Enter New Transaction</h1>
 	<div class="container">
 		<div class="row">
 			<div class="column">
 				<form th:object="${transaction}"
 					th:action="@{/inputTransaction/{id}(id=${id})}" method='POST'>
 					<div class="form-group col-4">
-						<label for="transactionAmount">Transaction Amount</label> <input
+						<label for="transactionAmount">Transaction Amount: </label> <input
 							type="number" class="form-control" id="transactionAmount"
 							name="transactionAmount" size="15"
 							th:field="*{transactionAmount}">
 					</div>
 					<div th:object="${storeInfo}">
 						<div class="form-group col-4">
-							<label for="storeName">Store Name</label> <input type="text"
+							<label for="storeName">Store Name: </label> <input type="text"
 								class="form-control" id="storeName" name="storeName" size="15"
 								th:field="*{storeName}">
 						</div>
 						<div class="form-group col-4">
-							<label for="storeAddress">Store Address</label> <input
+							<label for="storeAddress">Store Address: </label> <input
 								type="text" class="form-control" id="storeAddress"
 								name="storeAddress" size="15"
 								th:field="*{storeAddress}">
@@ -35,7 +59,7 @@
 			</div>
 		</div>
 	</div>
-
+</div>
 </body>
 </html>
 
