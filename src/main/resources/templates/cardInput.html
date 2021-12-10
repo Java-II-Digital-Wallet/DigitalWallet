@@ -5,6 +5,33 @@
 <title>Insert New Card</title>
 <link th:rel="stylesheet"
 	th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} " />
+	
+<script type="text/javascript">
+	function validate(){
+		let name = document.forms["myForm"]["cardName"].value;
+		let type = document.forms["myForm"]["type"].value;
+		let number = document.forms["myForm"]["cardNumber"].value;
+		let pin = document.forms["myForm"]["pin"].value;
+		
+		if(name == ""){
+			alert("Please provide card name!");
+			return false;
+		}
+		if(type == ""){
+			alert("Please provide card type!");
+			return false;
+		}
+		if(number <1){
+				alert("Please provide a card number!");
+				return false;
+		}
+		if(pin <1){
+			alert("Please provide a card pin!");
+			return false;
+	}
+	}
+</script>
+
 <style>
 body{
 	padding-left: 25%;
@@ -33,7 +60,7 @@ h1{
 	<div class="container">
 		<div class="row">
 			<div class="column">
-				<form th:object="${card}" th:action="@{/inputCard/{id}(id=${customerId})}" method='POST'>
+				<form name="myForm" th:object="${card}" th:action="@{/inputCard/{id}(id=${customerId})}" onsubmit="return validate()" method='POST'>
 					<div class="form-group col-4">
 						<label for="cardName">Card Name: </label> <input type="text"
 							class="form-control" id="cardName" name="cardName" size="50"
